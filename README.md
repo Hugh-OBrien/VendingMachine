@@ -23,4 +23,6 @@ With the first being a contigious string without spaces and the latter two integ
 
 ###[exe] [change state] [product state]
 
+e.g. with test files provided: ./vend I.change I.products
+
 ###The state files will get overwritten when the application is quit and so reflect any changes made to stock or change reserves while the machine was running
