@@ -44,7 +44,7 @@ public:
 
 VendingMachine(char* coinState, char* productState);
 
-//NEEDS DECONSTRUCTOR
+~VendingMachine();
 
 void saveMachineState(char* coinState, char* productState);
 //overwrites the files provided as input with the current machine state
@@ -64,8 +64,8 @@ void listProducts();
 bool addProduct(Product newProd);
 //adds a new product to the machine with 0 stock
 
-void removeProduct(Product product);
-//removes a product - for manual additions in case of mistakes
+void removeProduct(string productName);
+//removes a product - good for manual additions in case of mistakes
 
 bool addChange(string coinName, int quantity);
 //for adding to the held change, takes a coin object

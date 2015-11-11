@@ -47,6 +47,14 @@ VendingMachine::VendingMachine(char* coinState, char* productState){
     
   }
   in.close();
+}
+
+VendingMachine::~VendingMachine(){
+
+  delete insertedCoins;
+  delete productList;
+  for(int i=0; i<8; i++)
+    delete coinTypesHeld[i];
 
 }
 
@@ -134,7 +142,7 @@ void VendingMachine::purchase(){
       this->dispenseChange(balance);
 
       //      
-      cout<<"Enjoy your: "  << ite->name<<endl;
+      cout<<"Enjoy your: " << ite->name<<endl;
     }
   }
 
@@ -197,7 +205,21 @@ bool VendingMachine::addProduct(Product newProd){
   
 }
 
-void VendingMachine::removeProduct(Product product){
+void VendingMachine::removeProduct(string productName){
+
+  //find the product object
+  for(list<Product>::iterator ite=productList->begin(); ite!= productList->end(); ite++){
+    if(ite->name.compare(productName)==0){
+      map<string,int>::iterator mpit;
+      mpit=stock.find(ite->name);
+      stock.erase(mpit);
+      productList->erase(ite);
+      cout<<"Product removed successfully\n";
+      return;
+    }
+  }
+
+  cout<< "Product not found to remove!\n";
 
 }
 
